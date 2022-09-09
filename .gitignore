@@ -1,8 +1,12 @@
 /node_modules
+/app/Helper
 /public/hot
 /public/storage
+/public/theme
 /storage/*.key
+/storage
 /vendor
+/database
 .env
 .env.backup
 .phpunit.result.cache
