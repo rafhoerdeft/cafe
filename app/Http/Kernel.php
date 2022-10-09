@@ -2,6 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Auth;
+use App\Http\Middleware\PreventBackHistory;
+use App\Http\Middleware\IsLogin;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,5 +66,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'auths' => Auth::class,
+        'pbh' => PreventBackHistory::class,
+        'islogin' => IsLogin::class,
     ];
 }

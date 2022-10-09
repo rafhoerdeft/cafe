@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [App\Http\Livewire\Landing\Home\Index::class, 'render'])->name('landing');
+
+Route::prefix('/')->name('landing.')->group(function () {
+    Route::prefix('home')->name('home.')->namespace('App\Http\Livewire\Landing\Home')->group(function () {
+        Route::get('', 'Index@render')->name('index');
+    });
+    Route::prefix('menu')->name('menu.')->namespace('App\Http\Livewire\Landing\Menu')->group(function () {
+        Route::get('', 'Index@render')->name('index');
+    });
 });

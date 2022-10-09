@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\LogLogin;
+use App\Http\Controllers\Controller;
+use App\Models\AuthLog;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,17 +11,8 @@ use Illuminate\Support\Facades\Auth;
 class Login extends Controller
 {
 
-    public function __construct()
-    {
-        if (Auth::viaRemember()) {
-            return redirect()->route('dash');
-        }
-    }
-
     public function index()
     {
-        Auth::logout();
-        Session::forget(['log', 'nav']);
         return view('auth/index');
     }
 
@@ -35,26 +27,18 @@ class Login extends Controller
         $pass = $request->password;
         $remember = $request->has('remember') ? true : false;
 
+        Auth::setRememberDuration(720); // Set time duration remember cookies
+
         if (Auth::attempt(['username' => $user, 'password' => $pass, 'active' => 1], $remember)) {
 
-            // $payload = array(
-            //     'ses_id'    => session()->getId(),
-            //     'ip_add'    => $request->ip()
-            // );
-            // $token = json_encode($payload);
-            // dd(encode($token));
-
-            LogLogin::create([
+            AuthLog::create([
                 'user_id' => Auth::user()->id,
                 'ip_address' => $request->ip(),
             ]);
 
-            session()->put('log', Auth::user()->role->nama_role);
-            session()->put('log_uid', encode(Auth::user()->id));
-
             return redirect()->route('dash');
         } else {
-            return redirect()->route('auth')->with('alert', 'Username atau password salah!')->withInput();
+            return redirect()->route('auth')->with('alert', 'Wrong username or password!')->withInput();
         }
     }
 
@@ -62,6 +46,9 @@ class Login extends Controller
     {
         // Hapus semua data pada session
         // session()->destroy();
+
+        Auth::logout();
+        Session::forget(['nav']);
 
         // redirect ke halaman login	
         return redirect()->route('auth');
