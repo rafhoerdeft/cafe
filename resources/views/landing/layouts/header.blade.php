@@ -66,64 +66,12 @@
                     <div class="col-lg-3 text-right col-md-3">
                         <ul class="nav-right">
 
-                            <li class="cart-icon">
-                                <a href="#">
-                                    <i class="icon_bag_alt"></i>
-                                    <span>3</span>
-                                </a>
+                            <li class="cart-icon" title="Cart">
+                                @livewire('landing.cart-icon')
+                            </li>
 
-                                <div class="cart-hover">
-                                    <div class="btn-close">
-                                        <button type="button" class="btn btn-sm btn-danger rounded-circle"
-                                            title="Close">
-                                            <i class="ti-close font-weight-bold"></i>
-                                        </button>
-                                    </div>
-                                    <div class="select-items">
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="si-pic">
-                                                        <img src="{{ asset('landing/img/select-product-1.jpg') }}"
-                                                            alt="">
-                                                    </td>
-                                                    <td class="si-text">
-                                                        <div class="product-selected">
-                                                            <p>$60.00 x 1</p>
-                                                            <h6>Kabino Bedside Table</h6>
-                                                        </div>
-                                                    </td>
-                                                    <td class="si-close">
-                                                        <i class="ti-close"></i>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="si-pic">
-                                                        <img src="{{ asset('landing/img/select-product-2.jpg') }}"
-                                                            alt="">
-                                                    </td>
-                                                    <td class="si-text">
-                                                        <div class="product-selected">
-                                                            <p>$60.00 x 1</p>
-                                                            <h6>Kabino Bedside Table</h6>
-                                                        </div>
-                                                    </td>
-                                                    <td class="si-close">
-                                                        <i class="ti-close"></i>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="select-total">
-                                        <span>total:</span>
-                                        <h5>$120.00</h5>
-                                    </div>
-                                    <div class="select-button">
-                                        <a href="#" class="primary-btn view-card">VIEW ALL</a>
-                                        <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
-                                    </div>
-                                </div>
+                            <li class="order-icon" title="Order">
+                                @livewire('landing.order-icon')
                             </li>
 
                             <li class="cart-price">$150.00</li>
@@ -161,24 +109,43 @@
 
 @push('js_script')
     <script>
-        $('.cart-icon a').click(function() {
-            if ($('.cart-hover').hasClass('cart-hover-show')) {
-                $('.cart-hover').removeClass('cart-hover-show');
+        $('.cart-icon .cart-link').click(function() {
+            if ($(this).closest('.cart-icon').find('.cart-hover').hasClass('cart-hover-show')) {
+                $(this).closest('.cart-icon').find('.cart-hover').removeClass('cart-hover-show');
             } else {
-                $('.cart-hover').addClass('cart-hover-show');
+                $(this).closest('.cart-icon').find('.cart-hover').addClass('cart-hover-show');
+                if ($('.order-icon .order-hover').hasClass('order-hover-show')) {
+                    $('.order-icon .order-hover').removeClass('order-hover-show');
+                }
             }
         });
 
-        $('.cart-hover .btn-close button').click(function() {
-            $('.cart-hover').removeClass('cart-hover-show');
+        $('.cart-icon .cart-hover .btn-close-box button').click(function() {
+            $('.cart-icon .cart-hover').removeClass('cart-hover-show');
+        });
+
+        $('.order-icon .order-link').click(function() {
+            if ($(this).closest('.order-icon').find('.order-hover').hasClass('order-hover-show')) {
+                $(this).closest('.order-icon').find('.order-hover').removeClass('order-hover-show');
+            } else {
+                $(this).closest('.order-icon').find('.order-hover').addClass('order-hover-show');
+                if ($('.cart-icon .cart-hover').hasClass('cart-hover-show')) {
+                    $('.cart-icon .cart-hover').removeClass('cart-hover-show');
+                }
+            }
+        });
+
+        $('.order-icon .order-hover .btn-close-box button').click(function() {
+            $('.order-icon .order-hover').removeClass('order-hover-show');
         });
 
         $(document).ready(function() {
-            let width = screen.width;
+            let width = screen.width - 1;
             if (width >= 400) {
                 width = 350 + 10;
             }
-            $(".cart-hover").css("width", (width - 10) + 'px');
+            $(".cart-icon .cart-hover").css("width", (width - 10) + 'px');
+            $(".order-icon .order-hover").css("width", (width - 10) + 'px');
         });
     </script>
 @endpush

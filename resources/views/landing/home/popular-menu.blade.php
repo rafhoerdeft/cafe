@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="product-list">
-                        <div class="row g-3">
+                        <div class="row gx-3">
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">

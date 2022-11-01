@@ -10,6 +10,7 @@
     <!-- Css Styles -->
     {{-- <link rel="stylesheet" href="{{ asset('landing/css/bootstrap.min.css') }}" type="text/css"> --}}
     <link rel="stylesheet" href="{{ asset_ext('bootstrap-5.1.3/css/bootstrap.min.css') }}" type="text/css">
+    {{-- <link rel="stylesheet" href="{{ asset_ext('fontawesome-6.2.0/css/all.min.css') }}" type="text/css"> --}}
     <link rel="stylesheet" href="{{ asset('landing/css/font-awesome.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('landing/css/themify-icons.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('landing/css/glyphter-icons.css') }}" type="text/css">
@@ -17,8 +18,8 @@
     <link rel="stylesheet" href="{{ asset('landing/css/owl.carousel.min.css') }}" type="text/css">
     {{-- <link rel="stylesheet" href="{{ asset('landing/css/nice-select.css') }}" type="text/css"> --}}
     <link rel="stylesheet" href="{{ asset('landing/css/jquery-ui.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('landing/css/slicknav.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('landing/css/style_new.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('landing/css/slicknav-new.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('landing/css/style-new.css') }}" type="text/css">
 
     <link rel="stylesheet" href="{{ asset('landing/css/theme/color1.css') }}" type="text/css">
 
@@ -118,9 +119,15 @@
         <div class="loader"></div>
     </div>
 
-    @livewire('landing.header')
+    @include('landing.layouts.header')
+
+    {{-- @livewire('landing.header') --}}
 
     @yield('content')
+
+    <button class="back-to-top rounded-circle" id="myBtn" title="Go to top">
+        <i class="fa fa-arrow-up"></i>
+    </button>
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
@@ -147,12 +154,12 @@
                 </div>
                 {{-- <div class="col-lg-2 offset-lg-1">
                     <div class="footer-widget">
-                        <h5>Information</h5>
+                        <h5>Menu Category</h5>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Checkout</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Serivius</a></li>
+                            <li><a href="#">Food</a></li>
+                            <li><a href="#">Drink</a></li>
+                            <li><a href="#">Snack</a></li>
+                            <li><a href="#">Desert</a></li>
                         </ul>
                     </div>
                 </div> --}}
@@ -204,6 +211,7 @@
     <script src="{{ asset('landing/js/jquery-3.3.1.min.js') }}"></script>
     {{-- <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script> --}}
     <script src="{{ asset_ext('bootstrap-5.1.3/js/bootstrap.bundle.min.js') }}"></script>
+    {{-- <script src="{{ asset_ext('fontawesome-6.2.0/js/all.min.js') }}"></script> --}}
     <script src="{{ asset('landing/js/jquery-ui.min.js') }}"></script>
     {{-- <script src="{{ asset('landing/js/jquery.countdown.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('landing/js/jquery.nice-select.min.js') }}"></script> --}}

@@ -21,5 +21,20 @@ Route::prefix('/')->name('landing.')->group(function () {
     });
     Route::prefix('menu')->name('menu.')->namespace('App\Http\Livewire\Landing\Menu')->group(function () {
         Route::get('', 'Index@render')->name('index');
+        Route::prefix('detail')->name('detail.')->group(function () {
+            Route::get('', 'Detail\Index@render')->name('index');
+        });
+    });
+    Route::prefix('cart')->name('cart.')->namespace('App\Http\Livewire\Landing\Cart')->group(function () {
+        Route::get('', 'Index@render')->name('index');
+    });
+    Route::prefix('order')->name('order.')->namespace('App\Http\Livewire\Landing\Order')->group(function () {
+        Route::get('', 'Index@render')->name('index');
+    });
+    Route::prefix('checkout')->name('checkout.')->namespace('App\Http\Livewire\Landing\Checkout')->group(function () {
+        Route::get('', 'Index@render')->name('index');
+    });
+    Route::prefix('invoice')->name('invoice.')->namespace('App\Http\Livewire\Landing\Invoice')->group(function () {
+        Route::get('', 'Index@render')->name('index');
     });
 });
