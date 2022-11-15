@@ -15,7 +15,7 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ asset('landing/img/products/product-1.jpg') }}" alt="">
+                                        <img src="{{ show_file('image/products/product-1.jpg') }}" alt="">
                                         <div class="sale pp-sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
@@ -42,7 +42,7 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ asset('landing/img/products/product-2.jpg') }}" alt="">
+                                        <img src="{{ show_file('image/products/product-2.jpg') }}" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -67,7 +67,7 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ asset('landing/img/products/product-3.jpg') }}" alt="">
+                                        <img src="{{ show_file('image/products/product-3.jpg') }}" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -92,7 +92,7 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ asset('landing/img/products/product-4.jpg') }}" alt="">
+                                        <img src="{{ show_file('image/products/product-4.jpg') }}" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -117,7 +117,7 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ asset('landing/img/products/product-5.jpg') }}" alt="">
+                                        <img src="{{ show_file('image/products/product-5.jpg') }}" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -142,7 +142,7 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ asset('landing/img/products/product-6.jpg') }}" alt="">
+                                        <img src="{{ show_file('image/products/product-6.jpg') }}" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -168,7 +168,7 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ asset('landing/img/products/product-7.jpg') }}" alt="">
+                                        <img src="{{ show_file('image/products/product-7.jpg') }}" alt="">
                                         <div class="sale pp-sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
@@ -195,7 +195,7 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ asset('landing/img/products/product-8.jpg') }}" alt="">
+                                        <img src="{{ show_file('image/products/product-8.jpg') }}" alt="">
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>

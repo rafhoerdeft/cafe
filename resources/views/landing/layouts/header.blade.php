@@ -86,9 +86,9 @@
             <div class="container">
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Home</a></li>
+                        <li class="active"><a href="{{ url('/') }}">Home</a></li>
                         {{-- <li><a href="./shop.html">Shop</a></li> --}}
-                        <li><a href="#">Menu</a>
+                        <li><a href="javascript:void(0)">Menu</a>
                             <ul class="dropdown">
                                 <li><a href="#">Food</a></li>
                                 <li><a href="#">Drink</a></li>

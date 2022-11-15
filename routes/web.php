@@ -38,3 +38,9 @@ Route::prefix('/')->name('landing.')->group(function () {
         Route::get('', 'Index@render')->name('index');
     });
 });
+
+// STORAGE FILE ROUTE
+Route::prefix('storage')->name('storage.')->namespace('App\Http\Controllers')->group(function () {
+    Route::get('show/{path?}', 'FileStorage@show')->name('show');
+    Route::get('download/{path?}', 'FileStorage@download')->name('download');
+});

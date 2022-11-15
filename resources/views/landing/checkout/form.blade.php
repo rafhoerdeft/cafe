@@ -30,7 +30,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <label for="rating">Rate Us<span>*</span></label>
-                                @livewire('landing.checkout.shop-rating')
+                                @include('landing.checkout.shop-rating')
                             </div>
                             <div class="col-lg-12 mt-4">
                                 <button type="submit" class="btn primary-btn d-block text-center w-100" value="">
