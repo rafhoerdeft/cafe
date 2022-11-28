@@ -15,7 +15,8 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ show_file('image/products/product-1.jpg') }}" alt="">
+                                        <div class="img" data-src="{{ show_file('image/products/product-1.jpg') }}">
+                                        </div>
                                         <div class="sale pp-sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
@@ -42,7 +43,8 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ show_file('image/products/product-2.jpg') }}" alt="">
+                                        <div class="img" data-src="{{ show_file('image/products/product-2.jpg') }}">
+                                        </div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -67,7 +69,8 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ show_file('image/products/product-3.jpg') }}" alt="">
+                                        <div class="img" data-src="{{ show_file('image/products/product-3.jpg') }}">
+                                        </div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -92,7 +95,8 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ show_file('image/products/product-4.jpg') }}" alt="">
+                                        <div class="img" data-src="{{ show_file('image/products/product-4.jpg') }}">
+                                        </div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -117,7 +121,8 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ show_file('image/products/product-5.jpg') }}" alt="">
+                                        <div class="img" data-src="{{ show_file('image/products/product-5.jpg') }}">
+                                        </div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -142,7 +147,8 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ show_file('image/products/product-6.jpg') }}" alt="">
+                                        <div class="img" data-src="{{ show_file('image/products/product-6.jpg') }}">
+                                        </div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -168,7 +174,8 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ show_file('image/products/product-7.jpg') }}" alt="">
+                                        <div class="img"
+                                            data-src="{{ show_file('image/products/product-7.jpg') }}"></div>
                                         <div class="sale pp-sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
@@ -195,7 +202,8 @@
                             <div class="col-lg-3 col-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ show_file('image/products/product-8.jpg') }}" alt="">
+                                        <div class="img"
+                                            data-src="{{ show_file('image/products/product-8.jpg') }}"></div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>

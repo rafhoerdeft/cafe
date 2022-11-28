@@ -12,8 +12,10 @@
                     <div class="col-lg-3 col-md-3">
                         <div class="logo">
                             <a href="./index.html">
-                                <img src="{{ asset('landing/img/logo.png') }}" alt="" class="align-baseline">
-                                {{-- <label class="text-logo">Fashi.</label> --}}
+                                @if ($show_logo == 1)
+                                    <img src="{{ asset('landing/img/logo.png') }}" alt="" class="align-baseline">
+                                @endif
+                                <label class="text-logo">Fashi.</label>
                             </a>
                         </div>
                     </div>

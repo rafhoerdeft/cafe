@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="product-large set-bg" data-setbg="{{ show_file('image/products/women-large.jpg') }}">
+                    <div class="product-large set-bg" data-setbg="{{ show_file($background) }}">
                         <h2 class="d-none d-lg-block label-box">Menu Category</h2>
                         <h2 class="d-block d-lg-none">Menu Category</h2>
                         {{-- <a href="#">Discover More</a> --}}
@@ -37,7 +37,9 @@
                             <div class="product-slider owl-carousel">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ show_file('image/products/women-1.jpg') }}" alt="">
+                                        <div class="img"
+                                            data-src="https://images.tokopedia.net/img/JFrBQq/2022/8/9/886e7849-85fb-42c0-95dc-0a1839234615.jpg">
+                                        </div>
                                         <div class="sale">Favorite</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
@@ -64,7 +66,8 @@
                                 </div>
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ show_file('image/products/women-2.jpg') }}" alt="">
+                                        <div class="img" data-src="{{ show_file('image/products/women-2.jpg') }}"
+                                            alt=""></div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -86,7 +89,8 @@
                                 </div>
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ show_file('image/products/women-3.jpg') }}" alt="">
+                                        <div class="img" data-src="{{ show_file('image/products/women-3.jpg') }}"
+                                            alt=""></div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -108,12 +112,14 @@
                                 </div>
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="{{ show_file('image/products/women-4.jpg') }}" alt="">
+                                        <div class="img" data-src="{{ show_file('image/products/women-4.jpg') }}"
+                                            alt=""></div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
                                         <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a>
+                                            <li class="w-icon active"><a href="#"><i
+                                                        class="icon_bag_alt"></i></a>
                                             </li>
                                             <li class="quick-view"><a href="#">Quick View</a></li>
                                         </ul>
@@ -156,6 +162,10 @@
     </section>
 </div>
 
+@push('css_plugin')
+    <link rel="stylesheet" type="text/css" href="{{ asset_ext('slick/slick.css') }}" />
+@endpush
+
 @push('js_plugin')
     <script type="text/javascript" src="{{ asset_ext('slick/slick.min.js') }}"></script>
 @endpush
@@ -180,4 +190,10 @@
             variableWidth: true
         });
     </script>
+
+    {{-- <script>
+        $('.tab-content .product-slider .product-item img').on('load', function() {
+            console.log(this);
+        });
+    </script> --}}
 @endpush

@@ -1,0 +1,100 @@
+/* .skeleton{
+    margin:15px;
+    padding:10px;
+    height: 115px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+  } */
+  
+  .skeleton{background:#E8E8E8;}
+  
+  .skeleton .square{
+    float:left;
+    width: 90px;
+    height:56px;
+    margin:0 0 10px;
+  }
+  
+  .skeleton .line{height:12px;margin:0 0 10px 105px;}
+  .skeleton .line:nth-child(2){width: 120px;}
+  .skeleton .line:nth-child(3){width: 170px;}
+  .skeleton .line:nth-child(4){width: 150px;}
+  
+  .skeleton .circle{
+    float:left;
+    width: 15px;
+    height:15px;
+    margin:0 15px 10px 0;
+    border-radius:15px;
+  }
+  
+  /* 
+    --------------
+    Pulse effect animation 
+    Activated by adding a '.pulse' class to the skeleton
+    --------------
+  */
+  
+  .skeleton.pulse{
+    animation: pulse 1s infinite ease-in-out;
+    -webkit-animation:pulse 1s infinite ease-in-out;
+  }
+  
+  @keyframes pulse
+  {
+    0%{
+      background-color: rgba(165,165,165,.1);
+    }
+    50%{
+      background-color: rgba(165,165,165,.3);
+    }
+    100%{
+      background-color: rgba(165,165,165,.1);
+    }
+  }
+  
+  @-webkit-keyframes pulse
+  {
+    0%{
+      background-color: rgba(165,165,165,.1);
+    }
+    50%{
+      background-color: rgba(165,165,165,.3);
+    }
+    100%{
+      background-color: rgba(165,165,165,.1);
+    }
+  }
+  
+  /* 
+    --------------
+    Wave effect animation 
+    Activated by adding a '.wave' class to the skeleton
+    --------------
+  */
+  
+  .skeleton.wave{
+      animation: wave 1s infinite linear forwards;
+      -webkit-animation:wave 1s infinite linear forwards;
+      background: #f6f7f8;
+      background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+      background-size: 800px 104px;
+  }
+  
+  @keyframes wave{
+      0%{
+          background-position: -468px 0
+      }
+      100%{
+          background-position: 468px 0
+      }
+  }
+  
+  @-webkit-keyframes wave{
+      0%{
+          background-position: -468px 0
+      }
+      100%{
+          background-position: 468px 0
+      }
+  }

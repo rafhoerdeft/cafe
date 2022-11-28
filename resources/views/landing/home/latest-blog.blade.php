@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="single-latest-blog">
-                        <img src="{{ show_file('image/latest-1.jpg') }}" alt="">
+                        <div class="img blog" data-src="{{ show_file('image/latest-1.jpg') }}"></div>
                         <div class="latest-text">
                             <div class="tag-list">
                                 <div class="tag-item">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="single-latest-blog">
-                        <img src="{{ show_file('image/latest-2.jpg') }}" alt="">
+                        <div class="img blog" data-src="{{ show_file('image/latest-2.jpg') }}"></div>
                         <div class="latest-text">
                             <div class="tag-list">
                                 <div class="tag-item">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="single-latest-blog">
-                        <img src="{{ show_file('image/latest-3.jpg') }}" alt="">
+                        <div class="img blog" data-src="{{ show_file('image/latest-3.jpg') }}"></div>
                         <div class="latest-text">
                             <div class="tag-list">
                                 <div class="tag-item">

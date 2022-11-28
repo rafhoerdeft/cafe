@@ -1,1 +1,3 @@
-@extends('landing.layouts.app')
+<div>
+
+</div>

@@ -4,6 +4,8 @@
 <head>
     @include('landing.layouts.meta')
 
+    <meta name="turbolinks-cache-control" content="no-cache">
+
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
@@ -23,7 +25,11 @@
 
     <link rel="stylesheet" href="{{ asset('landing/css/theme/color1.css') }}" type="text/css">
 
-    <link rel="stylesheet" type="text/css" href="{{ asset_ext('slick/slick.css') }}" />
+    <!-- Skeleton Lazy Load -->
+    <link rel="stylesheet" href="css/skeleton.css">
+
+    <!-- Animate Transition -->
+    <link rel="stylesheet" href="css/turn.css">
 
     <!-- Plugin CSS -->
     @stack('css_plugin')
@@ -111,19 +117,35 @@
 
     @livewireStyles
 
+    @livewireScripts
+
+    {{-- <script type="module">
+        import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
+    </script> --}}
+
+    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
+        data-turbolinks-eval="false" data-turbo-eval="false"></script>
+
+    <!-- App JS -->
+    <script src="/js/app.js"></script>
+    <script src="/js/turn.js"></script>
+    <script>
+        Turn.start();
+    </script>
+
 </head>
 
 <body>
-    <!-- Page Preloder -->
+    {{-- <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
-    </div>
+    </div> --}}
 
-    @include('landing.layouts.header')
+    {{-- @include('landing.layouts.header') --}}
 
-    {{-- @livewire('landing.header') --}}
+    @livewire('landing.header', ['show_logo' => session('config')['logo']])
 
-    @yield('content')
+    {{ $slot }}
 
     <button class="back-to-top rounded-circle" id="myBtn" title="Go to top">
         <i class="fa fa-arrow-up"></i>
@@ -204,8 +226,6 @@
         </div>
     </footer>
     <!-- Footer Section End -->
-
-    @livewireScripts
 
     <!-- Js Plugins -->
     <script src="{{ asset('landing/js/jquery-3.3.1.min.js') }}"></script>

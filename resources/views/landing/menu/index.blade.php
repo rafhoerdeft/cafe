@@ -1,13 +1,11 @@
-@extends('landing.layouts.app')
-
-@section('content')
+<div>
     <div class="breacrumb-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb-text">
                         {{-- <a href="#"><i class="fa fa-home"></i> Home</a>
-                    <span>Shop</span> --}}
+                        <span>Shop</span> --}}
                     </div>
                 </div>
             </div>
@@ -41,26 +39,26 @@
             </div>
         </div>
     </section>
-@endsection
 
-@push('css_plugin')
-    <link rel="stylesheet" href="{{ asset('landing/css/nice-select.css') }}" type="text/css">
-@endpush
+    @push('css_plugin')
+        <link rel="stylesheet" href="{{ asset('landing/css/nice-select.css') }}" type="text/css">
+    @endpush
 
-@push('css_style')
-    <style>
-        .product-show-option .select-option .sorting.nice-select {
-            margin: 0px;
-        }
-    </style>
-@endpush
+    @push('css_style')
+        <style>
+            .product-show-option .select-option .sorting.nice-select {
+                margin: 0px;
+            }
+        </style>
+    @endpush
 
-@push('js_plugin')
-    <script src="{{ asset('landing/js/jquery.nice-select.min.js') }}"></script>
-@endpush
+    @push('js_plugin')
+        <script src="{{ asset('landing/js/jquery.nice-select.min.js') }}"></script>
+    @endpush
 
-@push('js_script')
-    <script>
-        $('.sorting').niceSelect();
-    </script>
-@endpush
+    @push('js_script')
+        <script>
+            $('.sorting').niceSelect();
+        </script>
+    @endpush
+</div>

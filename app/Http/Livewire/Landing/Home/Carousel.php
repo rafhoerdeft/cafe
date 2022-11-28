@@ -8,6 +8,8 @@ use Livewire\Component;
 class Carousel extends Component
 {
     public $readyToLoad = true; //false
+    public $show_popular_menu;
+    public $show_blog;
 
     public function loading()
     {

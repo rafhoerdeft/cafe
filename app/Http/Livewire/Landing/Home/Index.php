@@ -2,12 +2,17 @@
 
 namespace App\Http\Livewire\Landing\Home;
 
-use Livewire\Component;
+use App\Http\Livewire\Landing\Base;
 
-class Index extends Component
+class Index extends Base
 {
+    public function mount()
+    {
+        # code...
+    }
+
     public function render()
     {
-        return view('landing.home.index');
+        return view('landing.home.index', ['config' => session('config')]);
     }
 }

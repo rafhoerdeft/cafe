@@ -1,6 +1,4 @@
-@extends('landing.layouts.app')
-
-@section('content')
+<div>
     <div class="breacrumb-section">
         <div class="container">
             <div class="row">
@@ -44,4 +42,4 @@
             </div>
         </div>
     </section>
-@endsection
+</div>

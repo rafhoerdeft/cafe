@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Landing\Invoice;
 
-use Livewire\Component;
+use App\Http\Livewire\Landing\Base;
 
-class Index extends Component
+class Index extends Base
 {
     public function render()
     {
