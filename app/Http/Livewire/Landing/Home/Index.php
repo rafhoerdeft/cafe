@@ -6,13 +6,12 @@ use App\Http\Livewire\Landing\Base;
 
 class Index extends Base
 {
-    public function mount()
-    {
-        # code...
-    }
-
     public function render()
     {
-        return view('landing.home.index', ['config' => session('config')]);
+        return view('landing.home.index', ['config' => $this->config])
+            ->layoutData([
+                'theme_color' => $this->config->themes->css_file,
+                'show_logo' => $this->config->logo,
+            ]);
     }
 }

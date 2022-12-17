@@ -1,5 +1,5 @@
 <div>
-    <a class="cart-link" href="#">
+    <a class="cart-link" href="javascript:void(0)">
         <i class="icon_bag_alt"></i>
         <span>3</span>
     </a>

@@ -23,13 +23,13 @@
     <link rel="stylesheet" href="{{ asset('landing/css/slicknav-new.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('landing/css/style-new.css') }}" type="text/css">
 
-    <link rel="stylesheet" href="{{ asset('landing/css/theme/color1.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('landing/css/theme/' . $theme_color) }}" type="text/css">
 
     <!-- Skeleton Lazy Load -->
-    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="/css/skeleton.css">
 
     <!-- Animate Transition -->
-    <link rel="stylesheet" href="css/turn.css">
+    {{-- <link rel="stylesheet" href="/css/turn.css"> --}}
 
     <!-- Plugin CSS -->
     @stack('css_plugin')
@@ -109,30 +109,31 @@
                 padding: 10px 12px;
             }
         }
-
-        .slick-tab .slick-list {
-            padding-bottom: 3px;
-        }
     </style>
 
     @livewireStyles
 
     @livewireScripts
 
+    <!-- Js Plugins -->
+    <script src="{{ asset('landing/js/jquery-3.3.1.min.js') }}"></script>
+
     {{-- <script type="module">
         import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
-    </script> --}}
-
-    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
-        data-turbolinks-eval="false" data-turbo-eval="false"></script>
-
-    <!-- App JS -->
-    <script src="/js/app.js"></script>
-    <script src="/js/turn.js"></script>
-    <script>
-        Turn.start();
     </script>
 
+    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
+        data-turbolinks-eval="false" data-turbo-eval="false"></script> --}}
+
+    <!-- App JS -->
+    {{-- <script src="/js/app.js"></script> --}}
+    {{-- <script src="/js/turn.js"></script> --}}
+
+    {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
+
+    {{-- <script>
+        Turn.start();
+    </script> --}}
 </head>
 
 <body>
@@ -141,9 +142,7 @@
         <div class="loader"></div>
     </div> --}}
 
-    {{-- @include('landing.layouts.header') --}}
-
-    @livewire('landing.header', ['show_logo' => session('config')['logo']])
+    @livewire('landing.header', ['show_logo' => $show_logo])
 
     {{ $slot }}
 
@@ -228,7 +227,6 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="{{ asset('landing/js/jquery-3.3.1.min.js') }}"></script>
     {{-- <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script> --}}
     <script src="{{ asset_ext('bootstrap-5.1.3/js/bootstrap.bundle.min.js') }}"></script>
     {{-- <script src="{{ asset_ext('fontawesome-6.2.0/js/all.min.js') }}"></script> --}}
@@ -241,7 +239,14 @@
     <script src="{{ asset('landing/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('landing/js/main_new.js') }}"></script>
 
+    {{-- <script src="{{ asset_js_config('localstorage_conf.js') }}"></script> --}}
     {{-- <script src="{{ asset_js_config('block.js') }}"></script> --}}
+
+    {{-- <script>
+        $(document).ready(function() {
+            loadConfig("{{ url('base/config') }}");
+        });
+    </script> --}}
 
     <!-- Plugin JS -->
     @stack('js_plugin')
@@ -249,14 +254,6 @@
     <!-- Script JS -->
     @stack('js_script')
 
-    {{-- <script type="module">
-        import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
-        data-turbolinks-eval="false"></script>
-
-    <script src="{{ mix('js/app.js') }}"></script> --}}
 </body>
 
 </html>

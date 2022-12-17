@@ -1,13 +1,21 @@
 <div>
-    @if ($config['carousel'] == 1)
-        @livewire('landing.home.carousel', ['show_popular_menu' => $config['carousel_popular_menu'], 'show_blog' => $config['carousel_blog']])
+    {{-- <div id="carousel_show">
+        <livewire:landing.home.carousel>
+    </div> --}}
+
+    @if ($config->carousel == 1)
+        @livewire('landing.home.carousel', ['show_popular_menu' => $config->carousel_popular_menu, 'show_blog' => $config->carousel_blog])
     @endif
-    @livewire('landing.home.menu-category', ['background' => $config['image_category_menu']])
+    @livewire('landing.home.menu-category', ['background' => $config->image_category_menu])
     @livewire('landing.home.best-seller')
     @livewire('landing.home.popular-menu')
-    @if ($config['blog'] == 1)
+    @if ($config->blog == 1)
         @livewire('landing.home.latest-blog')
     @endif
+
+    {{-- <div id="blog_show">
+        <livewire:landing.home.latest-blog>
+    </div> --}}
 
 </div>
 
@@ -15,77 +23,45 @@
     {{-- show skeleton lazy loading to all who load background image --}}
     <script>
         $(document).ready(function() {
-            // Background Carousel
+            // Skeleton Background Set
             $('[data-setbg]').each(function(i, obj) {
                 let self = this;
+                $(self).addClass('opacity-0'); // set opacity text 0
                 $(self).wrap('<div class="skeleton wave h-100"></div>'); // to wrap element
                 let imgUrl = $(self).data().setbg;
                 $('<img>').attr('src', function() {
                     return imgUrl;
                 }).on('load', function() {
                     $(self).unwrap();
+                    $(self).addClass('opacity-100');
                 });
             });
 
-            // Product Item
-            $('.product-item .pi-pic .img').each(function(i, obj) {
+            // Skeleton Content
+            $('.skeleton-content').each(function(i, obj) {
                 let self = this;
-                $(self).wrap('<div class="skeleton wave"></div>'); // to wrap element
+                $(self).find('.skeleton-wrap').addClass('opacity-0'); // set opacity text 0
+                $(self).find('.skeleton-wrap').wrap('<div class="skeleton wave"></div>'); // to wrap element
 
-                $(self).closest('.product-item')
-                    .find('.pi-text>div, .pi-text>a')
-                    .addClass('opacity-0'); // set opacity text 0
-
-                $(self).closest('.product-item')
-                    .find('.pi-text>div, .pi-text>a')
-                    .wrap('<div class="skeleton wave"></div>'); // to wrap element
-
-                let imgUrl = $(self).data().src;
+                let imgUrl = $(self).find('.img').data().src;
                 $('<img>').attr('src', function() {
                     return imgUrl;
                 }).on('load', function() {
-                    $(self).unwrap();
-
-                    $(self).closest('.product-item')
-                        .find('.pi-text .catagory-name, .pi-text .product-price, .pi-text a')
-                        .unwrap();
-
-                    $(self).closest('.product-item')
-                        .find('.pi-text>div, .pi-text>a')
-                        .addClass('opacity-100');
-                });
-            });
-
-            // Blog
-            $('.single-latest-blog .img').each(function(i, obj) {
-                let self = this;
-                $(self).wrap('<div class="skeleton wave"></div>'); // to wrap element
-
-                $(self).closest('.single-latest-blog')
-                    .find('.latest-text .tag-item, .latest-text>a, .latest-text>p')
-                    .addClass('opacity-0'); // set opacity text 0
-
-                $(self).closest('.single-latest-blog')
-                    .find('.latest-text .tag-item, .latest-text>a, .latest-text>p')
-                    .wrap('<div class="skeleton wave"></div>'); // to wrap element
-
-                let imgUrl = $(self).data().src;
-                $('<img>').attr('src', function() {
-                    return imgUrl;
-                }).on('load', function() {
-                    $(self).unwrap();
-
-                    $(self).closest('.single-latest-blog')
-                        .find(
-                            '.latest-text .tag-item, .latest-text a, .latest-text p'
-                        )
-                        .unwrap();
-
-                    $(self).closest('.single-latest-blog')
-                        .find('.latest-text .tag-item, .latest-text a, .latest-text p')
-                        .addClass('opacity-100');
+                    $(self).find('.skeleton-wrap').unwrap();
+                    $(self).find('.skeleton-wrap').addClass('opacity-100');
                 });
             });
         });
     </script>
+
+    {{-- <script>
+        loadConfig();
+        if (configs.carousel != 1) {
+            $('#carousel_show').remove();
+        }
+
+        if (configs.blog != 1) {
+            $('#blog_show').remove();
+        }
+    </script> --}}
 @endpush

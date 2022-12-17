@@ -20,7 +20,7 @@ Route::prefix('/')->name('landing.')->group(function () {
 
     Route::prefix('menu')->name('menu.')->group(function () {
         Route::get('', App\Http\Livewire\Landing\Menu\Index::class)->name('index');
-        Route::get('detail', App\Http\Livewire\Landing\Menu\Detail\Index::class)->name('detail');
+        Route::get('detail/{id}', App\Http\Livewire\Landing\Menu\Detail\Index::class)->name('detail');
     });
 
     Route::get('cart', App\Http\Livewire\Landing\Cart\Index::class)->name('cart');
@@ -36,4 +36,8 @@ Route::prefix('/')->name('landing.')->group(function () {
 Route::prefix('storage')->name('storage.')->namespace('App\Http\Controllers')->group(function () {
     Route::get('show/{path?}', 'FileStorage@show')->name('show');
     Route::get('download/{path?}', 'FileStorage@download')->name('download');
+});
+
+Route::prefix('base')->name('base.')->namespace('App\Http\Controllers')->group(function () {
+    Route::get('config', 'BaseController@getConfig')->name('config');
 });

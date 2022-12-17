@@ -1,6 +1,6 @@
 <div>
     <div class="product-pic-zoom" style="position: relative; overflow: hidden;">
-        <img class="product-big-img" src="{{ asset('landing/img/product-single/product-1.jpg') }}" alt="">
+        <img class="product-big-img" src="{{ show_file($photo) }}" alt="">
         <div class="zoom-icon">
             <i class="fa fa-search-plus"></i>
         </div>

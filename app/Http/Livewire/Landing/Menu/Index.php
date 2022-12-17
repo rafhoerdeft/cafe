@@ -8,6 +8,9 @@ class Index extends Base
 {
     public function render()
     {
-        return view('landing.menu.index');
+        return view('landing.menu.index')->layoutData([
+            'theme_color' => $this->config->themes->css_file,
+            'show_logo' => $this->config->logo,
+        ]);
     }
 }

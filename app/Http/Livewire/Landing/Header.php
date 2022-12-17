@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Landing;
 
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class Header extends Component

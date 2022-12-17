@@ -10,10 +10,10 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6">
-                    <div class="single-latest-blog">
-                        <div class="img blog" data-src="{{ show_file('image/latest-1.jpg') }}"></div>
+                    <div class="single-latest-blog skeleton-content">
+                        <div class="img blog skeleton-wrap" data-src="{{ show_file('image/latest-1.jpg') }}"></div>
                         <div class="latest-text">
-                            <div class="tag-list">
+                            <div class="tag-list skeleton-wrap">
                                 <div class="tag-item">
                                     <i class="fa fa-calendar-o"></i>
                                     May 4,2019
@@ -23,18 +23,19 @@
                                     5
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="#" class="skeleton-wrap">
                                 <h4>The Best Street Style From London Fashion Week</h4>
                             </a>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                            <p class="skeleton-wrap">Sed quia non numquam modi tempora indunt ut labore et dolore magnam
+                                aliquam quaerat </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="single-latest-blog">
-                        <div class="img blog" data-src="{{ show_file('image/latest-2.jpg') }}"></div>
+                    <div class="single-latest-blog skeleton-content">
+                        <div class="img blog skeleton-wrap" data-src="{{ show_file('image/latest-2.jpg') }}"></div>
                         <div class="latest-text">
-                            <div class="tag-list">
+                            <div class="tag-list skeleton-wrap">
                                 <div class="tag-item">
                                     <i class="fa fa-calendar-o"></i>
                                     May 4,2019
@@ -44,18 +45,19 @@
                                     5
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="#" class="skeleton-wrap">
                                 <h4>Vogue's Ultimate Guide To Autumn/Winter 2019 Shoes</h4>
                             </a>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                            <p class="skeleton-wrap">Sed quia non numquam modi tempora indunt ut labore et dolore magnam
+                                aliquam quaerat </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="single-latest-blog">
-                        <div class="img blog" data-src="{{ show_file('image/latest-3.jpg') }}"></div>
+                    <div class="single-latest-blog skeleton-content">
+                        <div class="img blog skeleton-wrap" data-src="{{ show_file('image/latest-3.jpg') }}"></div>
                         <div class="latest-text">
-                            <div class="tag-list">
+                            <div class="tag-list skeleton-wrap">
                                 <div class="tag-item">
                                     <i class="fa fa-calendar-o"></i>
                                     May 4,2019
@@ -65,10 +67,11 @@
                                     5
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="#" class="skeleton-wrap">
                                 <h4>How To Brighten Your Wardrobe With A Dash Of Lime</h4>
                             </a>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                            <p class="skeleton-wrap">Sed quia non numquam modi tempora indunt ut labore et dolore magnam
+                                aliquam quaerat </p>
                         </div>
                     </div>
                 </div>
