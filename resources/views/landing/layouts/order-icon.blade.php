@@ -1,7 +1,7 @@
 <div>
     <a class="order-link" href="javascript:void(0)">
         <i class="icon_document_alt"></i>
-        <span>3</span>
+        <span>0</span>
     </a>
 
     <div class="order-hover">

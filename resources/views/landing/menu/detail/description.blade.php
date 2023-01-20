@@ -41,7 +41,7 @@
                 <input type="text" wire:model="amount" readonly>
                 <span class="inc qtybtn" wire:click="updateAmount('plus')">+</span>
             </div>
-            <button type="button" class="btn primary-btn px-4">Add To Cart</button>
+            <button type="button" class="btn primary-btn px-4" wire:click="addToCart">Add To Cart</button>
         </div>
         {{-- <ul class="pd-tags">
                 <li><span>CATEGORIES</span>: More Accessories, Wallets &amp; Cases</li>

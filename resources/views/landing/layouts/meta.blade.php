@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--favicon-->
-<link rel="icon" sizes="16x16" href="{{ storage_path('upload/logo/file.img') }}" type="image/png" />
+<link rel="icon" sizes="16x16" href="{{ show_file('image/logo.png') }}" type="image/png" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,5 +15,5 @@
 
 <title>POS Cafe</title>
 
-<link rel="apple-touch-icon" href="{{ storage_path('upload/logo/file.img') }}">
-<link rel="shortcut icon" type="image/x-icon" href="{{ storage_path('upload/logo/file.img') }}">
+<link rel="apple-touch-icon" href="{{ show_file('image/logo.png') }}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ show_file('image/logo.png') }}">

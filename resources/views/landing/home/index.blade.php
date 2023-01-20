@@ -1,8 +1,4 @@
 <div>
-    {{-- <div id="carousel_show">
-        <livewire:landing.home.carousel>
-    </div> --}}
-
     @if ($config->carousel == 1)
         @livewire('landing.home.carousel', ['show_popular_menu' => $config->carousel_popular_menu, 'show_blog' => $config->carousel_blog])
     @endif
@@ -12,11 +8,6 @@
     @if ($config->blog == 1)
         @livewire('landing.home.latest-blog')
     @endif
-
-    {{-- <div id="blog_show">
-        <livewire:landing.home.latest-blog>
-    </div> --}}
-
 </div>
 
 @push('js_script')
@@ -53,15 +44,4 @@
             });
         });
     </script>
-
-    {{-- <script>
-        loadConfig();
-        if (configs.carousel != 1) {
-            $('#carousel_show').remove();
-        }
-
-        if (configs.blog != 1) {
-            $('#blog_show').remove();
-        }
-    </script> --}}
 @endpush

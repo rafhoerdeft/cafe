@@ -88,18 +88,27 @@
             <div class="container">
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li class="active"><a href="{{ url('/') }}">Home</a></li>
+                        <li class="{{ $active_nav != null ? ($active_nav == 'home' ? 'active' : '') : '' }}">
+                            <a href="{{ url('/') }}">Home</a>
+                        </li>
                         {{-- <li><a href="./shop.html">Shop</a></li> --}}
-                        <li><a href="javascript:void(0)">Menu</a>
+                        <li
+                            class="{{ $active_nav != null ? (current(explode('_', $active_nav)) == 'menu' ? 'active' : '') : '' }}">
+                            <a href="javascript:void(0)">Menu</a>
                             <ul class="dropdown">
-                                <li><a href="#">Food</a></li>
-                                <li><a href="#">Drink</a></li>
-                                <li><a href="#">Snack</a></li>
-                                <li><a href="#">Desert</a></li>
+                                @foreach ($menu_category as $item)
+                                    <li
+                                        class="{{ $active_nav != null ? ($active_nav == 'menu_' . strtolower($item->name) ? 'active' : '') : '' }}">
+                                        <a href="{{ route('landing.menu.show', ['category' => strtolower($item->name)]) }}"
+                                            class="{{ $active_nav != null ? ($active_nav == 'menu_' . strtolower($item->name) ? 'active' : 'secondary-bg') : '' }}">{{ text_uc($item->name) }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
                         {{-- <li><a href="./blog.html">Galery</a></li> --}}
-                        <li><a href="./contact.html">Blog</a></li>
+                        <li class="{{ $active_nav != null ? ($active_nav == 'blog' ? 'active' : '') : '' }}">
+                            <a href="./contact.html">Blog</a>
+                        </li>
                     </ul>
                 </nav>
 

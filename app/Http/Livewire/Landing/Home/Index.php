@@ -12,6 +12,7 @@ class Index extends Base
             ->layoutData([
                 'theme_color' => $this->config->themes->css_file,
                 'show_logo' => $this->config->logo,
+                'active_nav' => 'home',
             ]);
     }
 }

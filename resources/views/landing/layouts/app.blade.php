@@ -142,7 +142,7 @@
         <div class="loader"></div>
     </div> --}}
 
-    @livewire('landing.header', ['show_logo' => $show_logo])
+    @livewire('landing.header', ['show_logo' => $show_logo, 'active_nav' => isset($active_nav) ? $active_nav : null])
 
     {{ $slot }}
 

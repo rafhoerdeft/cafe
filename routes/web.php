@@ -19,7 +19,7 @@ Route::prefix('/')->name('landing.')->group(function () {
     Route::get('home',  App\Http\Livewire\Landing\Home\Index::class)->name('home');
 
     Route::prefix('menu')->name('menu.')->group(function () {
-        Route::get('', App\Http\Livewire\Landing\Menu\Index::class)->name('index');
+        Route::get('/{category}', App\Http\Livewire\Landing\Menu\Index::class)->name('show');
         Route::get('detail/{id}', App\Http\Livewire\Landing\Menu\Detail\Index::class)->name('detail');
     });
 

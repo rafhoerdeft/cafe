@@ -28,36 +28,7 @@
                                 id="{{ $item->code }}" role="tabpanel" aria-labelledby="{{ $item->code }}-tab">
                                 <div class="product-slider owl-carousel">
                                     @foreach ($item->menus->take(5) as $menu)
-                                        <div class="product-item skeleton-content">
-                                            <div class="pi-pic skeleton-wrap">
-                                                <div class="img" data-src="{{ show_file($menu->photo) }}">
-                                                </div>
-                                                <div class="sale">Favorite</div>
-                                                <div class="icon">
-                                                    <i class="icon_heart_alt"></i>
-                                                </div>
-                                                <ul>
-                                                    <li class="w-icon active" title="Add to Cart">
-                                                        <a href="#">+ <i class="icon_bag_alt"></i></a>
-                                                    </li>
-                                                    <li class="quick-view" title="View Detail">
-                                                        <a
-                                                            href="{{ route('landing.menu.detail', ['id' => encode($menu->id)]) }}">View</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="pi-text">
-                                                <div class="catagory-name skeleton-wrap">{{ $item->name }}</div>
-                                                <a href="{{ route('landing.menu.detail', ['id' => encode($menu->id)]) }}"
-                                                    class="skeleton-wrap">
-                                                    <h5>{{ $menu->name }}</h5>
-                                                    <div class="product-price skeleton-wrap">
-                                                        Rp {{ nominal($menu->price) }}
-                                                        {{-- <span>$35.00</span> --}}
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
+                                        @livewire('landing.menu.single.index', ['menu_id' => encode($menu->id), 'category_name' => $item->name, 'label' => ['name' => 'Sale', 'color' => '']], key('menu-' . encode($menu->id)))
                                     @endforeach
                                 </div>
                                 <div class="row">

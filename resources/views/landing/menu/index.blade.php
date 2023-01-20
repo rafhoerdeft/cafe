@@ -17,32 +17,22 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>Beverage</h2>
+                        <h2>{{ text_uc($category_name) }}</h2>
                     </div>
                 </div>
             </div>
             <div class="row g-3">
                 <div class="col-6 col-lg-3 offset-6 offset-lg-9 product-show-option">
-                    <div class="select-option">
-                        <select name="sort" class="sorting w-100" id="">
-                            <option value="">Poppular <i class="fa fa-user"></i></option>
-                            <option value="">Favorite</option>
-                            <option value="">Latest</option>
-                        </select>
-                    </div>
+                    @livewire('landing.menu.sorting')
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    @livewire('landing.menu.list-menu')
+                    @livewire('landing.menu.list-menu', ['category_name' => $category_name])
                 </div>
             </div>
         </div>
     </section>
-
-    @push('css_plugin')
-        <link rel="stylesheet" href="{{ asset('landing/css/nice-select.css') }}" type="text/css">
-    @endpush
 
     @push('css_style')
         <style>
@@ -52,13 +42,25 @@
         </style>
     @endpush
 
-    @push('js_plugin')
-        <script src="{{ asset('landing/js/jquery.nice-select.min.js') }}"></script>
-    @endpush
-
     @push('js_script')
+        {{-- show skeleton lazy loading to all who load background image --}}
         <script>
-            $('.sorting').niceSelect();
+            $(document).ready(function() {
+                // Skeleton Content
+                $('.skeleton-content').each(function(i, obj) {
+                    let self = this;
+                    $(self).find('.skeleton-wrap').addClass('opacity-0'); // set opacity text 0
+                    $(self).find('.skeleton-wrap').wrap('<div class="skeleton wave"></div>'); // to wrap element
+
+                    let imgUrl = $(self).find('.img').data().src;
+                    $('<img>').attr('src', function() {
+                        return imgUrl;
+                    }).on('load', function() {
+                        $(self).find('.skeleton-wrap').unwrap();
+                        $(self).find('.skeleton-wrap').addClass('opacity-100');
+                    });
+                });
+            });
         </script>
     @endpush
 </div>

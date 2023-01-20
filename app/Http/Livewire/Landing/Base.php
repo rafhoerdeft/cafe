@@ -8,7 +8,11 @@ use Livewire\Component;
 
 class Base extends Component
 {
-    protected $config, $like_menu, $cookie_like_menu_name = 'like-menu', $cookie_config_name = 'configs-web';
+    protected
+        $config,
+        // $like_menu = [],
+        $cookie_like_menu_name = 'like-menu',
+        $cookie_config_name = 'configs-web';
 
     protected $listeners = ['setCookieLikeMenu'];
 
@@ -17,7 +21,7 @@ class Base extends Component
         parent::__construct();
 
         $this->loadCookieConfigWeb();
-        $this->loadCookieLikeMenu();
+        // $this->loadCookieLikeMenu();
     }
 
     public function loadCookieConfigWeb()
@@ -50,7 +54,7 @@ class Base extends Component
         if (!Cookie::has($cookie_name)) {
             $like_menu[] = $menu_id;
 
-            $this->like_menu = $like_menu;
+            // $this->like_menu = $like_menu;
 
             Cookie::queue(cookie()->forever($cookie_name, json_encode($like_menu))); // Set cookie config
         } else {
@@ -60,12 +64,12 @@ class Base extends Component
                     $cookies[] = $menu_id;
                 }
             } else {
-                if (($key = array_search($menu_id, $cookies)) !== false) {
-                    unset($cookies[$key]);
+                if (($key = array_search($menu_id, $cookies)) !== false) { // Search menu_id from array cookies
+                    unset($cookies[$key]); // Is available remove from array
                 }
             }
 
-            $this->like_menu = $cookies;
+            // $this->like_menu = $cookies;
 
             Cookie::queue(cookie()->forever($cookie_name, json_encode($cookies))); // Set cookie config
         }
@@ -76,7 +80,7 @@ class Base extends Component
         $cookie_name = $this->cookie_like_menu_name;
         if (Cookie::has($cookie_name)) {
             $cookies = json_decode(request()->cookie($cookie_name), true);
-            $this->like_menu = $cookies;
+            // $this->like_menu = $cookies;
         }
     }
 }
