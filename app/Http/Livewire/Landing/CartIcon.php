@@ -9,51 +9,71 @@ use Livewire\Component;
 
 class CartIcon extends Component
 {
-    protected $listeners = ['setListCart'];
-    public $cookie_cart_name = 'list-cart';
-    public $menu_id = [];
+    protected $listeners = ['setListCart', 'removeListCart'];
+    private $cookie_cart_name = 'list-cart';
+    public $list_cart = [];
+    public $count_list_cart = 0;
+    private $limit = 5;
 
-    public function setListCart($menu_option_id, int $amount, bool $add)
+    public function mount()
     {
         $cookie_name = $this->cookie_cart_name;
-        $list_cart = [];
+        if (Cookie::has($cookie_name)) {
+            $cookies = json_decode(request()->cookie($cookie_name), true);
+            $this->count_list_cart = count($cookies);
+            $this->list_cart = array_slice($cookies, 0, $this->limit);
+        }
+    }
+
+    public function setListCart($menu_option_id, int $amount, bool $add = true)
+    {
+        $cookie_name = $this->cookie_cart_name;
+
+        $menu_option = MenuOption::with(['menus'])->find($menu_option_id);
+        $data = [
+            'id' => $menu_option->id,
+            'name' => $menu_option->menus->name,
+            'photo' => $menu_option->menus->photo,
+            'price' => ($menu_option->extra_price + $menu_option->menus->price),
+            'amount' => $amount,
+            'option_name' => $menu_option->name
+        ];
 
         if (!Cookie::has($cookie_name)) {
-            $menu_option = MenuOption::with(['menus'])->find($menu_option_id);
-
-            $list_cart[] = [
-                'id' => encode($menu_option->id),
-                'name' => $menu_option->menus->name,
-                'price' => ($menu_option->extra_price + $menu_option->menus->price),
-                'amount' => $amount,
-                'option_name' => $menu_option->name
-            ];
-
-            Cookie::queue(cookie()->forever($cookie_name, json_encode($list_cart))); // Set cookie config
+            $list_menu[] = $data;
         } else {
-            $cookies = json_decode(request()->cookie($cookie_name), true);
-            // if ($add) {
-            //     if (!in_array($menu_id, $cookies)) {
-            //         $cookies[] = $menu_id;
-            //     }
-            // } else {
-            //     if (($key = array_search($menu_id, $cookies)) !== false) { // Search menu_id from array cookies
-            //         unset($cookies[$key]); // Is available remove from array
-            //     }
-            // }
+            $list_menu = json_decode(request()->cookie($cookie_name), true);
+            $collect_menu = collect($list_menu); // change array list_menu to collection data
 
-            Cookie::queue(cookie()->forever($cookie_name, json_encode($cookies))); // Set cookie config
+            if ($collect_menu->where('id', $menu_option_id)->all()) { // check if menu_option_id is available in cookies
+                $key = $collect_menu->where('id', $menu_option_id)->keys()->first(); // get Key/Index from array list_menu
+                if ($add) {
+                    $list_menu[$key]['amount'] += $amount; // add amount
+                } else {
+                    $list_menu[$key]['amount'] = $amount; // update/replace amount
+                }
+            } else {
+                $list_menu[] = $data;
+            }
         }
+
+        $this->count_list_cart = count($list_menu);
+        $this->list_cart = array_slice($list_menu, 0, $this->limit);
+        Cookie::queue(cookie()->forever($cookie_name, json_encode($list_menu))); // Set cookie config
+    }
+
+    public function removeListCart($key)
+    {
+        $cookie_name = $this->cookie_cart_name;
+        $list_menu = json_decode(request()->cookie($cookie_name), true);
+        unset($list_menu[$key]); // Is available remove from array
+        $this->count_list_cart = count($list_menu);
+        $this->list_cart = array_slice($list_menu, 0, $this->limit);
+        Cookie::queue(cookie()->forever($cookie_name, json_encode($list_menu))); // Set cookie config
     }
 
     public function render()
     {
-        if ($this->menu_id != null) {
-            $menu = Menu::with(['menu_categories:id,name'])->whereIn('id', $this->menu_id);
-        } else {
-            $menu = null;
-        }
-
-        return view('landing.layouts.cart-icon', compact('menu'));
+        return view('landing.layouts.cart-icon');
     }
 }

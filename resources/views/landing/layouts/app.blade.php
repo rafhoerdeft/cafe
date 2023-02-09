@@ -142,6 +142,8 @@
         <div class="loader"></div>
     </div> --}}
 
+    @yield('loading')
+
     @livewire('landing.header', ['show_logo' => $show_logo, 'active_nav' => isset($active_nav) ? $active_nav : null])
 
     {{ $slot }}
@@ -225,6 +227,8 @@
         </div>
     </footer>
     <!-- Footer Section End -->
+
+    @stack('modal')
 
     <!-- Js Plugins -->
     {{-- <script src="{{ asset('landing/js/bootstrap.min.js') }}"></script> --}}

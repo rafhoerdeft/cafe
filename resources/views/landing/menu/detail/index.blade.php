@@ -36,7 +36,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            @livewire('landing.menu.detail.related')
+                            @livewire('landing.menu.detail.related', ['category_id' => encode($menu->menu_categories->id), 'menu_id' => encode($menu->id)])
                         </div>
                     </div>
                 </div>

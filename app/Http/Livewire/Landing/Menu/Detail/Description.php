@@ -8,30 +8,41 @@ use Livewire\Component;
 
 class Description extends Component
 {
-    public $menu, $price, $menu_option_id, $amount = 1, $like = 0;
+    public $menu, $price, $menu_option_id, $amount = 1, $like = 0, $loading_button = false;
 
-    public function mount($menu)
+    protected $listeners = ['close_loading' => 'closeLoadingButton'];
+
+    public function mount()
     {
         $extra_price = 0;
-        foreach ($menu->menu_options as $item) {
+        foreach ($this->menu->menu_options as $item) {
             if ($item->type == 0) {
                 $extra_price = $item->extra_price;
                 $this->menu_option_id = $item->id;
             }
         }
-        $this->price = $menu->price + $extra_price;
+        $this->price = $this->menu->price + $extra_price;
 
         $this->loadLikeMenu();
     }
 
     public function addToCart()
     {
-        $this->emit('setListCart', $this->menu_option_id, $this->amount, true);
+        $this->loading_button = true;
+        $this->emit('setListCart', $this->menu_option_id, $this->amount);
+
+        $this->emit('close_loading');
+
+        $menu_option_name = $this->menu->menu_options->where('id', $this->menu_option_id)->first()->name;
+        $this->dispatchBrowserEvent('show-modal', [
+            'name' => $this->menu->name . ' - ' . $menu_option_name,
+            'amount' => $this->amount
+        ]);
     }
 
-    public function updateMenuOptionId($new_price = 0)
+    public function closeLoadingButton()
     {
-        $this->price = $new_price;
+        $this->loading_button = false;
     }
 
     public function updateAmount($action)

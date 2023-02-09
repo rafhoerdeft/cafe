@@ -1,5 +1,5 @@
-<div class="skeleton-content">
-    <div class="product-pic-zoom skeleton-wrap" style="position: relative; overflow: hidden;">
+<div class="skeleton-content-bg">
+    <div class="product-pic-zoom skeleton-wrap h350" style="position: relative; overflow: hidden;">
         <img class="product-big-img" src="{{ show_file($photo) }}" alt="">
         <div class="zoom-icon">
             <i class="fa fa-search-plus"></i>
@@ -23,12 +23,20 @@
     </div> --}}
 </div>
 
+@push('css_style')
+    <style>
+        .h350 {
+            height: 350px;
+        }
+    </style>
+@endpush
+
 @push('js_script')
     {{-- show skeleton lazy loading to all who load background image --}}
     <script>
         $(document).ready(function() {
             // Skeleton Content
-            $('.skeleton-content').each(function(i, obj) {
+            $('.skeleton-content-bg').each(function(i, obj) {
                 let self = this;
                 $(self).find('.skeleton-wrap').addClass('opacity-0'); // set opacity text 0
                 $(self).find('.skeleton-wrap').wrap('<div class="skeleton wave"></div>'); // to wrap element
@@ -40,6 +48,7 @@
                 tmpImg.onload = function() {
                     $(self).find('.skeleton-wrap').unwrap();
                     $(self).find('.skeleton-wrap').addClass('opacity-100');
+                    $(self).find('.skeleton-wrap').removeClass('h350');
                 };
             });
         });

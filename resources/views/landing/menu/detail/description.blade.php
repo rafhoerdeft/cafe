@@ -27,7 +27,7 @@
             @foreach ($menu->menu_options as $item)
                 <div class="sc-item">
                     <input wire:model.defer="menu_option_id"
-                        wire:click="updateMenuOptionId({{ $item->extra_price + $menu->price }})" type="radio"
+                        wire:click="$set('price', {{ $item->extra_price + $menu->price }})" type="radio"
                         id="{{ $item->code }}" value="{{ $item->id }}">
                     <label for="{{ $item->code }}"
                         class="{{ $menu_option_id != null ? ($menu_option_id == $item->id ? 'active' : '') : ($item->type == 0 ? 'active' : '') }}">{{ $item->name }}</label>
@@ -41,7 +41,12 @@
                 <input type="text" wire:model="amount" readonly>
                 <span class="inc qtybtn" wire:click="updateAmount('plus')">+</span>
             </div>
-            <button type="button" class="btn primary-btn px-4" wire:click="addToCart">Add To Cart</button>
+            <button type="button" class="btn primary-btn px-4" wire:click="addToCart">
+                @if ($loading_button)
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                @endif
+                Add To Cart
+            </button>
         </div>
         {{-- <ul class="pd-tags">
                 <li><span>CATEGORIES</span>: More Accessories, Wallets &amp; Cases</li>
@@ -49,3 +54,47 @@
             </ul> --}}
     </div>
 </div>
+
+@push('modal')
+    <div class="modal fade" id="addToCartModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="addToCartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    {{-- <i class="fa fa-check-circle primary-text" style="font-size: 20pt;"></i> --}}
+                    <div class="swal2-icon swal2-success swal2-icon-show mt-0" style="display: flex;">
+                        <div class="swal2-success-circular-line-left" style="background-color: rgb(255, 255, 255);"></div>
+                        <span class="swal2-success-line-tip"></span> <span class="swal2-success-line-long"></span>
+                        <div class="swal2-success-ring"></div>
+                        <div class="swal2-success-fix" style="background-color: rgb(255, 255, 255);"></div>
+                        <div class="swal2-success-circular-line-right" style="background-color: rgb(255, 255, 255);"></div>
+                    </div>
+                    <div id="textAlert" class="position-relative"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endpush
+
+@push('css_plugin')
+    <link rel="stylesheet" href="{{ asset_ext('sweetalert/css/sweetalert2.min.css') }}">
+@endpush
+
+@push('js_plugin')
+    <script src="{{ asset_ext('sweetalert/js/sweetalert2.all.min.js') }}"></script>
+@endpush
+
+@push('js_script')
+    <script>
+        window.addEventListener('show-modal', event => {
+            let name = event.detail.name;
+            let amount = event.detail.amount;
+            $('#addToCartModal .modal-body #textAlert').html('<b class="primary-text">' + name + ' @' + amount +
+                '</b> <br>has been added to the cart');
+            $('#addToCartModal').modal('show');
+            setTimeout(function() {
+                $('#addToCartModal').modal('hide');
+            }, 1500)
+        })
+    </script>
+@endpush
