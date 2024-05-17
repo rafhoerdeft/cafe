@@ -6,7 +6,15 @@
     border-radius: 5px;
   } */
   
-  .skeleton{background:#E8E8E8;}
+  .skeleton{
+    background:#E8E8E8;
+    cursor: wait;
+  }
+
+  .skeleton a{
+    cursor: wait;
+    pointer-events: none;
+  }
   
   .skeleton .square{
     float:left;

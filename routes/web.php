@@ -13,9 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', App\Http\Livewire\Landing\Home\Index::class)->name('landing');
+Route::middleware(['pbh', 'islogin:customer'])->get('/', App\Http\Livewire\Auths\Customer::class)->name('auth');
 
-Route::prefix('/')->name('landing.')->group(function () {
+// Route::prefix('/')->name('auth.')->namespace('App\Http\Controllers')->group(function () {
+//     Route::get('auth', 'Login@index')->middleware(['pbh', 'islogin']);
+//     Route::post('auth', 'Login@process')->name('process')->middleware(['pbh', 'islogin']);
+//     Route::get('logout', 'Login@logout')->name('logout');
+// });
+
+Route::middleware(['pbh', 'auth:customer'])->prefix('/')->name('landing.')->group(function () {
     Route::get('home',  App\Http\Livewire\Landing\Home\Index::class)->name('home');
 
     Route::prefix('menu')->name('menu.')->group(function () {

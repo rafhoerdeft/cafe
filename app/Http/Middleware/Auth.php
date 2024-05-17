@@ -16,16 +16,18 @@ class Auth
      */
     public function handle(Request $request, Closure $next, $roles)
     {
-        $log = $request->session()->get('log');
-        $role = explode(';', $roles);
-        if (!in_array($log, $role)) {
+        if (auth('user')->check()) {
+            $log = $request->user()->roles->name;
+            $role = explode(';', $roles);
+            if (!in_array($log, $role)) {
 ?>
-            <script>
-                alert('Please login first!');
-                // document.location = window.history.back();
-                document.location = "<?= url('/') ?>";
-            </script>
+                <script>
+                    alert('Please login first!');
+                    // document.location = window.history.back();
+                    document.location = "<?= url('/') ?>";
+                </script>
 <?php
+            }
         }
 
         return $next($request);

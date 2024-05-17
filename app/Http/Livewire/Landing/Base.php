@@ -41,7 +41,7 @@ class Base extends Component
 
             $this->config = json_decode($config_web);
 
-            Cookie::queue($cookie_name, $config_web, 180); // Set cookie config
+            Cookie::queue($cookie_name, $config_web, 180); // Set cookie config 180 minutes
         } else {
             $this->config = json_decode(request()->cookie($cookie_name)); // get cookie config
         }
@@ -71,7 +71,7 @@ class Base extends Component
 
             // $this->like_menu = $cookies;
 
-            Cookie::queue(cookie()->forever($cookie_name, json_encode($cookies))); // Set cookie config
+            Cookie::queue(cookie()->forever($cookie_name, json_encode($cookies))); // Set cookie config forever
         }
     }
 
